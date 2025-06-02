@@ -26,7 +26,7 @@ def search_questions(request):
     questions = Question.objects.all()
     if query:
         questions = questions.filter(title__icontains=query)
-    return render(request, 'answers/search_questions.html', {'questions': questions, 'query': query})
+    return render(request, 'questions/search_questions.html', {'questions': questions, 'query': query})
 
 def question_list(request):
     questions = Question.objects.all().order_by('-created_at')
