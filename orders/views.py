@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import OrderForm
 from .models import Order
@@ -9,15 +8,16 @@ def order_item(request, item_id):
     if request.method == "POST":
         form = OrderForm(request.POST)
         if form.is_valid():
-            quantity = form.cleaned_data['quantity']
             Order.objects.create(
                 user=request.user,
-                item=item,
-                quantity=quantity
+                item=form.cleaned_data['item'],
+                quantity=form.cleaned_data['quantity'],
+                payment_method=form.cleaned_data['payment_method'],
+                coupon=form.cleaned_data.get('coupon')
             )
-            return redirect('order_complete')  # 完了ページへリダイレクト
+            return redirect('order_complete')
     else:
-        form = OrderForm()
+        form = OrderForm(initial={'item': item})
     return render(request, 'orders/order_item.html', {'item': item, 'form': form})
 
 def order_complete(request):
