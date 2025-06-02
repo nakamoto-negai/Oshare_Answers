@@ -1,0 +1,6 @@
+{% for item in items %}
+  <div>
+    <p>{{ item.name }}</p>
+    <a href="{% url 'order_item' item.id %}">この商品を注文する</a>
+  </div>
+{% endfor %}

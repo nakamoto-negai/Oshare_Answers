@@ -1,0 +1,15 @@
+<h2>質問検索</h2>
+<form method="get">
+  <input type="text" name="q" value="{{ query|default:'' }}" placeholder="キーワードで検索">
+  <button type="submit">検索</button>
+</form>
+<ul>
+  {% for question in questions %}
+    <li>
+      {{ question.title }}
+      <a href="{% url 'post_answer' question.id %}">回答する</a>
+    </li>
+  {% empty %}
+    <li>該当する質問がありません。</li>
+  {% endfor %}
+</ul>
