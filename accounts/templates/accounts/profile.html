@@ -1,0 +1,42 @@
+<h2>{{ user.username }}さんのプロフィール</h2>
+
+<h3>所持しているクーポン</h3>
+<ul>
+  {% for coupon in coupons %}
+    <li>{{ coupon.code }}（割引: {{ coupon.discount }}%、有効期限: {{ coupon.valid_to|date:"Y-m-d" }}）</li>
+  {% empty %}
+    <li>所持しているクーポンはありません。</li>
+  {% endfor %}
+</ul>
+
+<h3>自分のした質問</h3>
+<ul>
+  {% for question in questions %}
+    <li>{{ question.title }}（{{ question.created_at|date:"Y-m-d H:i" }}）</li>
+  {% empty %}
+    <li>投稿した質問はありません。</li>
+  {% endfor %}
+</ul>
+
+<h3>自分のした回答</h3>
+<ul>
+  {% for answer in answers %}
+    <li>
+      「{{ answer.question.title }}」への回答（{{ answer.created_at|date:"Y-m-d H:i" }}）<br>
+      {{ answer.body|truncatechars:50 }}
+    </li>
+  {% empty %}
+    <li>投稿した回答はありません。</li>
+  {% endfor %}
+</ul>
+
+<h3>購入履歴</h3>
+<ul>
+  {% for purchase in purchases %}
+    <li>
+      {{ purchase.item.name }} × {{ purchase.quantity }}（{{ purchase.purchased_at|date:"Y-m-d H:i" }}）
+    </li>
+  {% empty %}
+    <li>購入履歴はありません。</li>
+  {% endfor %}
+</ul>

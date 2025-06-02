@@ -6,8 +6,7 @@
 <ul>
   {% for question in questions %}
     <li>
-      {{ question.title }}
-      <a href="{% url 'post_answer' question.id %}">回答する</a>
+      <a href="{% url 'question_detail' question.id %}">{{ question.title }}</a>
     </li>
   {% empty %}
     <li>該当する質問がありません。</li>

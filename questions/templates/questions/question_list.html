@@ -1,0 +1,11 @@
+<h2>質問一覧</h2>
+<ul>
+  {% for question in questions %}
+    <li>
+      <a href="{% url 'question_detail' question.id %}">{{ question.title }}</a>
+      （{{ question.created_at|date:"Y-m-d H:i" }}）
+    </li>
+  {% empty %}
+    <li>質問がありません。</li>
+  {% endfor %}
+</ul>

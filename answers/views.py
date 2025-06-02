@@ -4,13 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import AnswerForm
 from questions.models import Question
 
-def search_questions(request):
-    query = request.GET.get('q')
-    questions = Question.objects.all()
-    if query:
-        questions = questions.filter(title__icontains=query)
-    return render(request, 'answers/search_questions.html', {'questions': questions, 'query': query})
-# Create your views here.
+
 
 
 
