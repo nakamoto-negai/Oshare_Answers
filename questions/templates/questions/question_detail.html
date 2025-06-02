@@ -17,7 +17,7 @@
 </ul>
 
 <h4>この質問に回答する</h4>
-<form method="post" action="{% url 'post_answer' question.id %}">
+<form method="post" action="{% url 'question_detail' question.id %}">
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit">回答を投稿</button>

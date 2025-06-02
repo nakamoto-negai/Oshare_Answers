@@ -1,7 +1,8 @@
 from django.db import models
 from django.conf import settings
-from items.models import Item, PaymentMethod
+from items.models import Item
 from coupons.models import Coupon
+from payments.models import PaymentMethod
 
 class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

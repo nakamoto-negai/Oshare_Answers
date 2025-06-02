@@ -30,11 +30,13 @@
   {% endfor %}
 </ul>
 
+<p>あなたのポイント: {{ user.points }}</p>
+
 <h3>購入履歴</h3>
 <ul>
-  {% for purchase in purchases %}
+  {% for order in orders %}
     <li>
-      {{ purchase.item.name }} × {{ purchase.quantity }}（{{ purchase.purchased_at|date:"Y-m-d H:i" }}）
+      {{ order.item.name }} × {{ order.quantity }}（{{ order.order_at|date:"Y-m-d H:i" }}）
     </li>
   {% empty %}
     <li>購入履歴はありません。</li>

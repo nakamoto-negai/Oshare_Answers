@@ -21,5 +21,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('', include('home.urls')),  # ここを追加
     path('questions/', include('questions.urls')),
-    #path('accounts/', include('accounts.urls')),
+    path('accounts/', include('accounts.urls')),
+    path('items/', include('items.urls')),
+    path('orders/', include('orders.urls')),
 ]
