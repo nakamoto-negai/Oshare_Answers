@@ -7,7 +7,7 @@
 
 {% block content %}
   <!-- ページ固有の内容 -->
-   <div class="product-page-container">
+   
     {% for item in items %}
     <div class="product-detail-card">
       <div class="image-section">
@@ -20,11 +20,12 @@
       <div class="product-info">
         <div>
           <p class="product-name-simple">{{ item.name }}</p>
+          <p class="product-price">価格: {{ item.price }}円</p>
           <a href="{% url 'order_item' item.id %}" class="order-btn">この商品を注文する</a>
         </div>
       </div>
     </div>
   {% endfor %}
-  </div>
+  
   <script src="{% static 'js/main.js' %}"></script>
 {% endblock %}

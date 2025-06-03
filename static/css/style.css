@@ -308,19 +308,20 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 16px;
-  max-width: 700px;   /* 必要に応じて調整 */
+ /* 必要に応じて調整 */
   margin: 24px auto;
   justify-content: center;
 }
 
 .product-detail-card {
-  display: grid;
+  display: flex;
   flex-wrap: wrap;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   padding: 25px;
-  max-width: 350px;
+  width: auto;
+  box-sizing: border-box;
   margin-bottom: 30px;
   justify-content: center;
 }
@@ -470,4 +471,84 @@ main {
   20% { opacity: 1; bottom: 30px; } 
   80% { opacity: 1; bottom: 30px; } 
   100% { opacity: 0; bottom: 0px; } 
+}
+
+.my-questions-list-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.my-questions-title {
+  text-align: center;
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #007bff;
+}
+
+.questions-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 0;
+}
+
+.questions-list li {
+  background-color: #fdfdfd;
+  border: 1px solid #e7e7e7;
+  padding: 15px 20px; /* パディングを少し調整 */
+  margin-bottom: 12px; /* 各質問間のマージン */
+  border-radius: 6px;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex; /* タイトルと日付を横並びにするため */
+  justify-content: space-between; /* 両端に寄せる */
+  align-items: center; /* 上下中央揃え */
+  flex-wrap: wrap; /* 画面が狭い場合に折り返す */
+}
+
+.questions-list li:hover {
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+  border-left: 5px solid #007bff; /* ホバー時に左のボーダーを強調 */
+  padding-left: 15px; /* 左のボーダー分パディングを調整 */
+}
+
+.questions-list li a {
+  text-decoration: none;
+  color: #0066cc;
+  font-size: 1.15em; /* 少しフォントを大きく */
+  font-weight: bold;
+  flex-grow: 1; /* タイトルができるだけ幅を取るように */
+  margin-right: 15px; /* 日付との間にマージン */
+}
+
+.questions-list li a:hover {
+  text-decoration: underline;
+  color: #004c99;
+}
+
+.questions-list .question-date {
+  font-size: 0.9em;
+  color: #666;
+  white-space: nowrap; /* 日付が折り返さないように */
+}
+
+.questions-list .no-questions-message,
+.questions-list .preview-item-empty { /* 以前のプレビュー用emptyクラスも共通スタイルに */
+  text-align: center;
+  color: #777;
+  padding: 30px 20px; /* パディングを多めに */
+  background-color: #f9f9f9;
+  border: 1px dashed #ddd;
+  border-radius: 6px;
+  justify-content: center; /* display:flex の影響をリセット/調整 */
+}
+.questions-list .no-questions-message:hover,
+.questions-list .preview-item-empty:hover {
+    border-left: none; /* ホバー時の左ボーダーは不要 */
+    padding-left: 20px;
+    box-shadow: none;
 }

@@ -1,13 +1,13 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %}ページタイトル{% endblock %}
 
 {% block content %}
   <h3>{{ question.title }}</h3>
   <p>{{ question.body }}</p>
-
-  <h4>回答一覧</h4>
-  <ul>
+  <section class="answers-list-section">
+  <h4 class="answers-list-title">回答一覧</h4>
+  <ul class="answers-list">
     {% for answer in question.answers.all %}
       <li>
         {{ answer.body }}（{{ answer.user.username }}）
@@ -23,6 +23,8 @@
     {% endfor %}
   </ul>
 
+  </section>
+  
   <h4>この質問に回答する</h4>
   <form method="post" action="{% url 'question_detail' question.id %}">
     {% csrf_token %}

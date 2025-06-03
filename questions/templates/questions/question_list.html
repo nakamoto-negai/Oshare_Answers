@@ -1,18 +1,20 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %}ページタイトル{% endblock %}
 
 {% block content %}
   <!-- ページ固有の内容 -->
-   <h2>質問一覧</h2>
-  <ul>
-    {% for question in questions %}
-      <li>
-        <a href="{% url 'question_detail' question.id %}">{{ question.title }}</a>
-        （{{ question.created_at|date:"Y-m-d H:i" }}）
-      </li>
-    {% empty %}
-      <li>質問がありません。</li>
-    {% endfor %}
-  </ul>
+  <div class="my-questions-list-container">
+    <h2 class="my-questions-title">質問一覧</h2>
+    <ul class="questions-list">
+      {% for question in questions %}
+        <li>
+          <a href="{% url 'question_detail' question.id %}">{{ question.title }}</a>
+          <span class="question-date">（{{ question.created_at|date:"Y-m-d H:i" }}）</span>
+        </li>
+      {% empty %}
+        <li class="no-questions-message">質問がありません。</li>
+      {% endfor %}
+    </ul>
+  </div>
 {% endblock %}
