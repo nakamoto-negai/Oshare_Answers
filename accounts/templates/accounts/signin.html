@@ -1,6 +1,13 @@
-<h2>サインイン</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">サインイン</button>
-</form>
+
+
+{% block title %}ページタイトル{% endblock %}
+
+{% block content %}
+  <!-- ページ固有の内容 -->
+    <h2>サインイン</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">サインイン</button>
+    </form>
+{% endblock %}

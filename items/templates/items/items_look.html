@@ -1,6 +1,30 @@
-{% for item in items %}
-  <div>
-    <p>{{ item.name }}</p>
-    <a href="{% url 'order_item' item.id %}">この商品を注文する</a>
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ user.username }}のプロフィール{% endblock %}
+
+
+
+{% block content %}
+  <!-- ページ固有の内容 -->
+   <div class="product-page-container">
+    {% for item in items %}
+    <div class="product-detail-card">
+      <div class="image-section">
+        <div class="main-image-container">
+          {% if item.image %}
+            <img id="mainProductImage" src="{{ item.image.url }}" alt="{{ item.name }}" style="max-width:200px; max-height:200px;">
+          {% endif %}
+        </div>    
+      </div>
+      <div class="product-info">
+        <div>
+          <p class="product-name-simple">{{ item.name }}</p>
+          <a href="{% url 'order_item' item.id %}" class="order-btn">この商品を注文する</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
   </div>
-{% endfor %}
+  <script src="{% static 'js/main.js' %}"></script>
+{% endblock %}

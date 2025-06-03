@@ -1,0 +1,473 @@
+/* 基本的なリセットとページ全体のスタイル */
+body {
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  line-height: 1.6;
+  background-color: #f8f9fa;
+  color: #212529;
+  margin: 0;
+  text-decoration: none;
+}
+
+.app-header {
+  background-color: #fff;
+  padding: 10px 20px;
+  border-bottom: 1px solid #dee2e6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.app-title {
+  font-size: 1.8em;
+  color: #007bff;
+  margin: 0;
+  
+}
+
+.main-navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.main-navigation li {
+  margin-left: 20px;
+}
+
+
+
+.main-navigation a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+.main-navigation a:hover {
+  text-decoration: underline;
+}
+
+main {
+  padding: 20px;
+  max-width: 1200px; /* PC表示用に最大幅を設定 */
+  margin: 0 auto; /* 中央揃え */
+}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 100%; /* 親要素の幅に合わせる */
+  position: relative;
+  margin: auto;
+  overflow: hidden; /* はみ出した画像を隠す */
+  border: 3px solid lightgreen; /* デザイン指示の緑枠 */
+  min-height: 300px; /* 画像が読み込まれるまでの高さを確保 */
+  background-color: #eee; /* 画像読み込み中の背景色 */
+}
+
+/* Hide the images by default */
+.slide {
+  display: none;
+  text-align: center; /* 画像を中央揃え */
+}
+.slide img {
+  width: 100%; /* コンテナの幅に合わせる */
+  height: auto; /* アスペクト比を維持 */
+  max-height: 500px; /* スライドショーの最大の高さを指定 (任意) */
+  object-fit: cover; /* コンテナに画像をフィットさせる方法 (cover or contain) */
+  vertical-align: middle;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(0,0,0,0.5);
+}
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Dots */
+.slide-dots {
+  text-align: center;
+  padding-top: 10px;
+}
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* Search Section (現在はhome.htmlでコメントアウトされています) */
+.search-section {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.home-search-form {
+  display: flex;
+  max-width: 600px;
+  margin: auto;
+}
+.home-search-form input[type="text"] {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  box-sizing: border-box; 
+  height: 40px; 
+}
+.home-search-form button {
+  padding: 0 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  height: 40px; 
+}
+.home-search-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Category Navigation */
+.category-navigation {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.category-buttons button {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 20px; 
+  cursor: pointer;
+  font-size: 0.9em;
+}
+.category-buttons button:hover {
+  background-color: #5a6268;
+}
+/* (任意) 選択されているカテゴリーボタンのスタイル */
+.category-buttons button.active-category {
+  background-color: #007bff; 
+  color: white;
+  font-weight: bold;
+}
+
+/* Category Image Grid Styles */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4列のグリッド */
+  gap: 15px; /* 画像間の隙間 */
+  margin-top: 20px;
+}
+
+.image-grid img {
+  width: 100%; /* セルの幅いっぱいに広がる */
+  height: 220px; /* 高さを固定 (この値を調整してお好みの高さに) */
+  object-fit: cover; /* 画像のアスペクト比を保ちつつ、要素全体を覆う */
+  border: 2px dashed #ccc; /* 枠線を少し目立たせる (確認用) */
+  border-radius: 4px;
+  background-color: #f0f0f0; /* 背景色 */
+  box-sizing: border-box; /* paddingやborderをwidth/heightに含める */
+  
+  /* 画像がない場合にaltテキストが中央に来るように (任意) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.9em; /* altテキストのフォントサイズ調整 */
+  color: #888; /* altテキストの色 */
+  overflow: hidden; /* altテキストがはみ出たら隠す */
+}
+
+/* User Showcase (Optional - 現在はhome.htmlでコメントアウトされています) */
+.user-showcase {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.user-avatars-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+.avatar-placeholder {
+  width: 80px;
+  height: 80px;
+  background-color: #e0e0e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #757575;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #dee2e6;
+  margin-top: 40px;
+  color: #6c757d;
+}
+
+/* Slideshow container (home.html用) */
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+  border: 3px solid lightgreen;
+  min-height: 300px;
+  background-color: #eee;
+  border-radius: 8px;
+}
+.slide { display: none; text-align: center; }
+.slide img { width: 100%; height: auto; max-height: 500px; object-fit: cover; vertical-align: middle; }
+.prev, .next { cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px; margin-top: -22px; color: white; font-weight: bold; font-size: 18px; transition: 0.6s ease; border-radius: 0 3px 3px 0; user-select: none; background-color: rgba(0,0,0,0.5); }
+.next { right: 0; border-radius: 3px 0 0 3px; }
+.prev:hover, .next:hover { background-color: rgba(0,0,0,0.8); }
+.slide-dots { text-align: center; padding-top: 10px; }
+.dot { cursor: pointer; height: 15px; width: 15px; margin: 0 2px; background-color: #bbb; border-radius: 50%; display: inline-block; transition: background-color 0.6s ease; }
+.active, .dot:hover { background-color: #717171; }
+.fade { animation-name: fade; animation-duration: 1.5s; }
+@keyframes fade { from {opacity: .4} to {opacity: 1} }
+
+/* Category Navigation & Grid (home.html用) */
+.category-navigation { text-align: center; margin-bottom: 30px; }
+.category-buttons button { background-color: #6c757d; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 20px; cursor: pointer; font-size: 0.9em; transition: background-color 0.3s; }
+.category-buttons button:hover { background-color: #5a6268; }
+.category-buttons button.active-category { background-color: #007bff; color: white; font-weight: bold; }
+.image-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 20px; }
+.image-grid img {
+  width: 100%; height: 220px; object-fit: cover;
+  border: 1px solid #eee; border-radius: 4px; background-color: #f0f0f0; box-sizing: border-box;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  font-size: 0.9em; color: #888; overflow: hidden;
+}
+
+.app-footer { text-align: center; padding: 20px; border-top: 1px solid #dee2e6; margin-top: 40px; color: #6c757d; font-size: 0.9em; }
+
+/* ======== Profile Page Styles ======== */
+.profile-main-title { text-align: center; color: #333; margin-top: 0; margin-bottom: 30px; border-bottom: 2px solid #007bff; padding-bottom: 10px; font-size: 1.8em;}
+.profile-section { background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 25px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.profile-section h3 { margin-top: 0; color: #333; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px; font-size: 1.4em; }
+.profile-section h3.modal-trigger { cursor: pointer; transition: color 0.2s ease-in-out; }
+.profile-section h3.modal-trigger:hover { color: #0056b3; }
+.profile-section ul { list-style-type: none; padding-left: 0; margin-top: 0; }
+.profile-section li { padding: 12px 5px; border-bottom: 1px dotted #e7e7e7; line-height: 1.7; color: #555; }
+.profile-section li:last-child { border-bottom: none; }
+
+/* ======== Modal Styles (Profile Page) ======== */
+.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.6); }
+.modal-content { background-color: #fefefe; margin: 10vh auto; padding: 25px; border: 1px solid #bbb; width: 70%; max-width: 650px; border-radius: 8px; position: relative; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); animation-name: animatetop; animation-duration: 0.4s; }
+@keyframes animatetop { from {top: -100px; opacity: 0} to {top: 0; opacity: 1} }
+.close-button { color: #aaa; float: right; font-size: 28px; font-weight: bold; line-height: 1; }
+.close-button:hover, .close-button:focus { color: #333; text-decoration: none; cursor: pointer; }
+#modalTitle { margin-top: 0; margin-bottom: 20px; font-size: 1.6em; color: #007bff; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+#modalBody { font-size: 1em; line-height: 1.7; color: #333; }
+#modalBody ul { list-style-type: none; padding-left: 0; margin-top: 0; }
+#modalBody li { padding: 10px 0; border-bottom: 1px dotted #f0f0f0; }
+#modalBody li:last-child { border-bottom: none; }
+
+
+/* ======== Product Page Styles (items_look.html / product_preview.html 用) ======== */
+.product-page-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  max-width: 700px;   /* 必要に応じて調整 */
+  margin: 24px auto;
+  justify-content: center;
+}
+
+.product-detail-card {
+  display: grid;
+  flex-wrap: wrap;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 25px;
+  max-width: 350px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.image-section {
+  flex: 1 1 450px; 
+  margin-right: 30px;
+  min-width: 30px; 
+}
+@media (max-width: 768px) { 
+  .product-detail-card {
+    flex-direction: column;
+  }
+  .image-section {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
+
+.main-image-container {
+  width: 220px;         /* フレームの最大幅 */
+  height: 220px;        /* フレームの最大高さ */
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
+}
+
+.main-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;  /* 画像の縦横比を保ったまま枠内に収める */
+  display: flex;
+}
+
+#mainProductImage { /* HTML側のIDと一致 */
+  display: flex;
+  width: 100%;
+  height: auto; 
+  min-height: 300px; 
+  max-height: 500px;
+  object-fit: contain; 
+}
+
+.thumbnail-images {
+  display: flex;
+  gap: 10px; 
+  justify-content: center; 
+  flex-wrap: wrap; 
+}
+
+.thumbnail-images .thumbnail { /* HTML側のクラス名と一致 */
+  width: 70px;  
+  height: 70px; 
+  object-fit: cover;
+  border: 2px solid transparent; 
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, transform 0.2s ease;
+  background-color: #f0f0f0;
+}
+
+.thumbnail-images .thumbnail:hover {
+  border-color: #007bff; 
+  transform: scale(1.05); 
+}
+
+.thumbnail-images .thumbnail.active {
+  border-color: #0056b3; 
+  box-shadow: 0 0 5px rgba(0,86,179,0.5);
+}
+
+.product-info {
+  flex: 1 1 50%; 
+  min-width: 300px;
+  display: flex; 
+  flex-direction: column; 
+  justify-content: flex-start; 
+  padding-top: 10px; 
+}
+
+.product-name-simple { /* HTML側のクラス名と一致 */
+  font-size: 2em; 
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 25px; 
+  line-height: 1.3;
+}
+
+.order-button { /* HTML側のクラス名と一致 */
+  background-color: #28a745; 
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  align-self: flex-start; 
+}
+
+.order-button:hover {
+  background-color: #218838; 
+  transform: translateY(-2px); 
+}
+.order-button:active {
+  transform: translateY(0);
+}
+
+/* カート追加ポップアップ */
+.popup { /* HTML側のクラス名と一致 */
+  display: none; 
+  position: fixed;
+  bottom: 30px; 
+  left: 50%;
+  transform: translateX(-50%); 
+  background-color: rgba(40, 40, 40, 0.9); 
+  color: white;
+  padding: 15px 30px;
+  border-radius: 25px; 
+  z-index: 1001;
+  font-size: 1em;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  animation: fadeinout 3s ease-in-out forwards; 
+}
+
+.order-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #007bff;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  text-align: center;
+}
+.order-btn:hover {
+  background: #0056b3;
+}
+
+@keyframes fadeinout {
+  0% { opacity: 0; bottom: 0px; } 
+  20% { opacity: 1; bottom: 30px; } 
+  80% { opacity: 1; bottom: 30px; } 
+  100% { opacity: 0; bottom: 0px; } 
+}

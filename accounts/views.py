@@ -6,7 +6,7 @@ from coupons.models import Coupon
 from questions.models import Question
 from answers.models import Answer
 from orders.models import Order # または orders.models.Order など、購入履歴のモデル名に合わせてください
-
+from items.models import Recommendation
 User = get_user_model()
 
 from django.shortcuts import render, redirect
@@ -47,11 +47,13 @@ def profile(request, user_id):
     questions = Question.objects.filter(user=user).order_by('-created_at')
     answers = Answer.objects.filter(user=user).order_by('-created_at')
     orders = Order.objects.filter(user=user).order_by('-ordered_at')
+    recommendations = Recommendation.objects.filter(recommended_to=user).select_related('item')
     return render(request, 'accounts/profile.html', {
         'user': user,
         'coupons': coupons,
         'questions': questions,
         'answers': answers,
         'orders': orders,
+        'recommendations': recommendations,
     })
 # Create your views here.

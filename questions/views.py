@@ -7,6 +7,7 @@ from answers.forms import AnswerForm
 from answers.models import Answer
 from django.contrib.auth.decorators import login_required
 from .forms import QuestionForm
+from items.models import Recommendation
 
 @login_required
 def post_question(request):
@@ -41,7 +42,14 @@ def question_detail(request, question_id):
             answer.user = request.user
             answer.question = question
             answer.save()
+            if answer.item:
+                Recommendation.objects.get_or_create(
+                    item=answer.item,
+                    recommended_to=question.user,         # 質問者
+                    recommended_from=request.user         # 回答者
+                )
             return redirect('question_detail', question_id=question.id)
+            
     else:
         form = AnswerForm()
     return render(request, 'questions/question_detail.html', {

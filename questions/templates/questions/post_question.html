@@ -1,6 +1,13 @@
-<h2>質問を投稿する</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">投稿</button>
-</form>
+{% extends "base.html" %}
+
+{% block title %}ページタイトル{% endblock %}
+
+{% block content %}
+  <!-- ページ固有の内容 -->
+   <h2>質問を投稿する</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">投稿</button>
+  </form>
+{% endblock %}

@@ -1,28 +1,36 @@
-<h2>{{ item.name }} の注文</h2>
-<form method="post">
-  {% csrf_token %}
-  <p>
-    <label for="{{ form.item.id_for_label }}">商品:</label>
-    {{ form.item }}
-  </p>
-  <p>
-    <label for="{{ form.quantity.id_for_label }}">数量:</label>
-    {{ form.quantity }}
-  </p>
-  <p>
-    <label for="{{ form.payment_method.id_for_label }}">決済方法:</label>
-    {{ form.payment_method }}
-  </p>
-  <p>
-    <label for="{{ form.coupon.id_for_label }}">クーポン:</label>
-    {{ form.coupon }}
-  </p>
-  {% if messages %}
-    <ul class="messages">
-    {% for message in messages %}
-      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-    </ul>
-    {% endif %}
-  <button type="submit">注文する</button>
-</form>
+{% extends "base.html" %}
+{% block title %}ページタイトル{% endblock %}
+
+{% block content %}
+  <!-- ページ固有の内容 -->
+  <h2>{{ item.name }} の注文</h2>
+  <form method="post">
+    {% csrf_token %}
+    <p>
+      <label for="{{ form.item.id_for_label }}">商品:</label>
+      {{ form.item }}
+    </p>
+    <p>
+      <label for="{{ form.quantity.id_for_label }}">数量:</label>
+      {{ form.quantity }}
+    </p>
+    <p>
+      <label for="{{ form.payment_method.id_for_label }}">決済方法:</label>
+      {{ form.payment_method }}
+    </p>
+    
+    <p>
+      <label for="{{ form.coupon.id_for_label }}">クーポン:</label>
+      {{ form.coupon }}
+    </p>
+    
+    {% if messages %}
+      <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+      </ul>
+      {% endif %}
+    <button type="submit">注文する</button>
+  </form>
+{% endblock %}

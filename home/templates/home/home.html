@@ -1,7 +1,43 @@
-<h2>ホーム</h2>
-<ul>
-  <li><a href="{% url 'post_question' %}">質問を投稿する</a></li>
-  <li><a href="{% url 'question_list' %}">回答を検索する</a></li>
-  <li><a href="{% url 'profile' user.id %}">プロフィールを見る</a></li>
-  <li><a href="{% url 'items_look' %}">アイテムを見る</a></li>
-</ul>
+{% extends "base.html" %}
+{% load static %}
+{% block title %}ページタイトル{% endblock %}
+
+{% block content %}
+  <!-- ページ固有の内容 -->
+   <main>
+    <section class="hero-slideshow">
+      <h2>注目スタイル</h2>
+      <div class="slideshow-container">
+        <div class="slide fade">
+          <img src="{% static 'images/fashion_image_1.jpg' %}" alt="ファッション画像1">
+        </div>
+        <div class="slide fade">
+          <img src="{% static 'images/fashion_image_2.jpg' %}" alt="ファッション画像2">
+        </div>
+        <div class="slide fade">
+          <img src="{% static 'images/fashion_image_3.jpg' %}" alt="ファッション画像3">
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <br>
+      <div style="text-align:center" class="slide-dots">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+    </section>
+   <section class="category-navigation">
+    <h3>カテゴリー</h3>
+    <div class="category-buttons">
+      <button type="button" data-category="men">MEN</button>
+      <button type="button" data-category="women">WOMEN</button>
+      <button type="button" data-category="kids">KIDS</button>
+      
+    </div>
+    <div id="image-grid-container" class="image-grid">
+    </div>
+  </section>
+  </main>
+  <script src="{% static 'js/main.js' %}"></script>
+{% endblock %}

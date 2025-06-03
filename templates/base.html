@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <title>{% block title %}ファッションQ&A ホーム{% endblock %}</title>
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="main-navigation">
+      <a href="{% url 'home' %}">
+        <h1 class="app-title" >Fashion Q&amp;A</h1>
+      </a>
+    </div>
+    
+    
+    <nav class="main-navigation">
+      <ul>
+        <li><a href="{% url 'post_question' %}">質問を投稿する</a></li>
+        <li><a href="{% url 'question_list' %}">回答を検索する</a></li>
+        <li><a href="{% url 'profile' user.id %}">プロフィールを見る</a></li>
+        <li><a href="{% url 'items_look' %}">アイテムを見る</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <main>
+    {% block content %}
+    <!-- 各ページ固有の内容 -->
+    {% endblock %}
+  </main>
+  <footer class="app-footer">
+    <p>&copy; 2025 Fashion Answers. All rights reserved.</p> </footer>
+</body>
+</html>
