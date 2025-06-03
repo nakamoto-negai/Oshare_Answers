@@ -552,3 +552,125 @@ main {
     padding-left: 20px;
     box-shadow: none;
 }
+.answers-list-title,
+.post-answer-title {
+  font-size: 1.6em;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.answers-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 0;
+}
+
+.answers-list li {
+  background-color: #fdfdfd;
+  border: 1px solid #e9e9e9;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+}
+.answers-list li:last-child {
+  margin-bottom: 0;
+}
+
+.answers-list .answer-body {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #333;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.answers-list .answer-meta {
+  font-size: 0.85em;
+  color: #666;
+  margin-bottom: 0;
+}
+.answers-list .answer-meta .answer-user {
+  font-weight: bold;
+}
+.answers-list .recommended-item {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+.answers-list .recommended-item:hover {
+  text-decoration: underline;
+}
+
+.answers-list .no-answers-message {
+  text-align: center;
+  color: #777;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px dashed #ddd;
+  border-radius: 6px;
+}
+
+/* 回答投稿フォームセクション */
+.answer-form {
+  /* フォーム全体のスタイル */
+}
+/* 既存の .question-form のスタイルを流用または参考に調整 */
+.answer-form .form-placeholder p,
+.answer-form > p { 
+  margin-bottom: 20px;
+}
+
+.answer-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #495057;
+  font-size: 0.95em;
+}
+
+.answer-form input[type="text"],
+.answer-form textarea {
+  width: calc(100% - 22px); 
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 1em;
+  line-height: 1.5;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.answer-form input[type="text"]:focus,
+.answer-form textarea:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.answer-form textarea {
+  min-height: 100px; 
+  resize: vertical; 
+}
+
+.submit-answer-button {
+  display: block; 
+  width: auto; /* 幅を内容に合わせる */
+  min-width: 150px; /* 最低幅 */
+  background-color: #007bff; /* 投稿ボタンの色 (青系) */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.05em;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-top: 10px; 
+}
+
+.submit-answer-button:hover {
+  background-color: #0056b3; 
+}

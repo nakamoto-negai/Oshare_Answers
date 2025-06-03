@@ -1,6 +1,6 @@
 
 
-{% block title %}ページタイトル{% endblock %}
+{% block title %}{% endblock %}
 
 {% block content %}
   <!-- ページ固有の内容 -->
@@ -9,5 +9,5 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">サインイン</button>
-    </form>
+    </form><p>アカウントをお持ちでない方は <a href="{% url 'signup' %}">サインアップ</a> してください。</p>
 {% endblock %}
